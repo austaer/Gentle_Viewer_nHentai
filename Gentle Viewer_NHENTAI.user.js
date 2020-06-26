@@ -26,11 +26,13 @@ class Gentle {
             return new Promise((resolve, reject) => {
                 let offset = (imgNo) * 3, itemIdx = 0, idx = offset + itemIdx;
                 for(let item of items) {
-                    let src = item.querySelector('a img').dataset.src.match(/.*:\/\/t[?=\.^]nhentai\.net\/galleries\/\d*/)[0].replace('//t', '//i');
+                    let src = item.querySelector('a img').dataset.src;
+                    let imgURL = src.match(/.*:\/\/t[?=\.^]nhentai\.net\/galleries\/\d*/)[0].replace('//t', '//i');
+                    let ext = src.match(/.*\.(\w{3,})$/)[1];
                     this.imgList[idx].onload = () => resolve(true)
                     this.imgList[idx].onerror = reject
                     this.imgList[idx].style = 'width: 100%;';
-                    this.imgList[idx].src = `${src}/${idx+1}.jpg`;
+                    this.imgList[idx].src = `${imgURL}/${idx+1}.${ext}`;
                     idx++;
                 }
             });
