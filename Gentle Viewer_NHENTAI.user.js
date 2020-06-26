@@ -57,7 +57,9 @@ class Gentle {
         while (window['thumbnail-container'].firstChild && window['thumbnail-container'].firstChild.className) {
             window['thumbnail-container'].removeChild(window['thumbnail-container'].firstChild);
         }
-        window['show-all-images-container'].remove();
+        if (window['show-all-images-container']) {
+            window['show-all-images-container'].remove();
+        }
     }
 
     generateImg(callback) {
@@ -72,3 +74,4 @@ class Gentle {
 }
 let thumbs = document.querySelectorAll(".thumbs .thumb-container");
 new Gentle([...thumbs]);
+//new Gentle(Number([...thumbs].slice(-2)[0].textContent), Number(gdd.querySelector("#gdd tr:nth-child(n+6) td.gdt2").textContent.split(" ")[0]));
