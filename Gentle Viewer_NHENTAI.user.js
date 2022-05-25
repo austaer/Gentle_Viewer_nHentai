@@ -27,7 +27,7 @@ class Gentle {
                 let offset = (imgNo) * 3, itemIdx = 0, idx = offset + itemIdx;
                 for(let item of items) {
                     let src = item.querySelector('a img').dataset.src;
-                    let imgURL = src.match(/.*:\/\/t[?=\.^]nhentai\.net\/galleries\/\d*/)[0].replace('//t', '//i');
+                    let imgURL = src.match(/.*:\/\/t.*[?=\.^]nhentai\.net\/galleries\/\d*/)[0].replace('//t', '//i');
                     let ext = src.match(/.*\.(\w{3,})$/)[1];
                     this.imgList[idx].onload = () => resolve(true)
                     this.imgList[idx].onerror = reject
